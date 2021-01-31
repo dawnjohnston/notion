@@ -3,16 +3,15 @@
 <head>
   <title>Percentage of year</title>
   <meta charset="utf-8">
-  <!-- <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css"> -->
+
   <style>
 html body {
   background-color: white;
 }
 
 #wrapper {
-  width: 98%;
-    margin-right: auto; /* 1 */
+  width: 99%;
+  margin-right: auto; /* 1 */
   margin-left:  auto; /* 1 */
   padding-right: 10px; /* 3 */
   padding-left:  10px; /* 3 */
@@ -24,7 +23,7 @@ html body {
 }
 .title {
   margin-bottom: 0;
-    font-weight: 700;
+    font-weight: 500;
 }
 
 .myProgress {
@@ -33,7 +32,7 @@ html body {
   border-radius:16px!important
 }
 
-.myBar {
+.myBarYear {
   padding: 1px;
   background-color: #efefef;
   border-radius:16px!important
@@ -44,46 +43,42 @@ html body {
   background-color: #efefef;
   border-radius:16px!important
 }
-
   </style>
+  
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
   <script type="text/javascript">
-    //YEAR
+    //script to calculate the percentage of YEAR complete
     
     var startYear = new Date(new Date().getFullYear(), 0, 1);
     var endYear = new Date(new Date().getFullYear(), 11, 31);
-    
     var date = new Date(),
       y = date.getFullYear(),
       m = date.getMonth();
     today = new Date();
     //calculate percent of year complete
     var timeElapsedYear = (Math.round(((today - startYear) / (endYear - startYear)) * 100));
-    
     $(document).ready(function() {
       var progressBarVal;
-     document.getElementById("currentYear").innerHTML = y; //gets the year to display
       
-      progressBarVal = timeElapsedYear;
-      
+      progressBarVal = timeElapsedYear; // passes the percentage
       var html = "<div class='myProgress' aria-valuenow=" + progressBarVal + " aria-valuemin='0' aria-valuemax='100' style='width:" + progressBarVal + "%'></div>";
-      document.getElementById("percentYear").innerHTML = progressBarVal;
-      $(".myBar").append(html);
+      $(".myBarYear").append(html); // displays the year progress bar
+       document.getElementById("currentYear").innerHTML = y; //gets the year to display
+       document.getElementById("percentYear").innerHTML = progressBarVal; // passes the percentage to display 
     });
   </script>
-  
-  <script type="text/javascript">
-    //MONTH
-     const monthNames = ["January", "February", "March", "April", "May", "June",
-  "July", "August", "September", "October", "November", "December"
-];
 
-const d = new Date();
-//var currentMonth =(monthNames[d.getMonth()]);
-    const currentMonth = date.toLocaleString('default', { month: 'long' });
-    // document.write(currentMonth);
+  <script type="text/javascript">
+    //This script calculates the percentage of the current MONTH complete
     
+    const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]; //array for month names
+    const d = new Date();
+    const currentMonth = date.toLocaleString('default', {
+      month: 'long'
+    }); // all this is just to display the month name in the html
+
+    // this is the calculation stuff...
     var startYear = new Date(new Date().getFullYear(), 0, 1);
     var endYear = new Date(new Date().getFullYear(), 11, 31);
     var startMonth = new Date(y, m, 1);
@@ -92,30 +87,30 @@ const d = new Date();
     var timeElapsedMonth = (Math.round(((today - startMonth) / (endMonth - startMonth)) * 100));
     $(document).ready(function() {
       var progressBarMonth;
-      
-      document.getElementById("thisMonth").innerHTML = currentMonth; //gets the month to display
-      
-      progressBarMonth = timeElapsedMonth;
+
+      progressBarMonth = timeElapsedMonth; // passes the percentage
       var p = "<div class='myProgress'" + progressBarMonth + " style='width:" + progressBarMonth + "%'><div>";
-      document.getElementById("percentMonth").innerHTML = progressBarMonth;
-      $(".myBarMonth").append(p);
+      
+      $(".myBarMonth").append(p); //displays the progress bar
+      document.getElementById("thisMonth").innerHTML = currentMonth; //passes the month name to display
+      document.getElementById("percentMonth").innerHTML = progressBarMonth; //displays the percentage
+      
     });
   </script>
 </head>
 
 <body>
   <div id='wrapper'>
-    
+
     <p class="title"><span id="thisMonth"></span> is <span id="percentMonth"></span>% complete</p>
     <div class="myProgress">
       <div class="myBarMonth"></div>
     </div>
-    
+
     <p class="title"><span id="currentYear"></span> is <span id="percentYear"></span>% complete</p>
     <div class="myProgress">
-      <div class="myBar"></div>
+      <div class="myBarYear"></div>
     </div>
-
 
   </div>
 </body>
