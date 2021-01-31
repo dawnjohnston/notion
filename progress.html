@@ -3,10 +3,35 @@
 <head>
   <title>Percentage of year</title>
   <meta charset="utf-8">
-  <!-- <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css"> -->
   <style>
+#container {
+    width: 80%;
+      display: inline-block;
+  vertical-align: middle;
+}
 
+.title {
+    display: inline-block;
+  vertical-align: middle;
+  font-family: arial;
+  font-size: .9em;
+  color: blue;
+}
+
+#myProgress {
+  background-color: #7ee383;
+  padding: 3px;
+  min-height: 5px;
+  border-radius:16px!important
+}
+
+#myBar {
+  background-color: #efefef;
+  font-family: arial;
+  font-size: 1em;
+  line-height:inherit;
+  border-radius:16px!important
+}
   </style>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
@@ -18,8 +43,7 @@
     $(document).ready(function() {
       var progressBarVal;
       progressBarVal = timeElapsed;
-      // var html = "<div class='progress-bar progress-bar-striped active' role='progressbar' aria-valuenow=" + progressBarVal + " aria-valuemin='0' aria-valuemax='100' style='width:" + progressBarVal + "%'>" + progressBarVal + "%</div>";
-      //   var html = "<div id='myProgress' aria-valuenow=" + progressBarVal + " aria-valuemin='0' aria-valuemax='100' style='width:" + progressBarVal + "%'>" + progressBarVal + "%</div>";
+     
       var html = "<div id='myProgress' aria-valuenow=" + progressBarVal + " aria-valuemin='0' aria-valuemax='100' style='width:" + progressBarVal + "%'>" + "</div>";
       $(".progress").append(html);
       $("#myBar").append(html);
