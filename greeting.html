@@ -4,29 +4,40 @@
 <head>
   <title>Greeting Message</title>
   <style>
+    #wrapper {
+    max-width: 960px;
+    margin-left: auto;
+    margin-right: auto;
+  padding-right: 10px; /* 3 */
+  padding-left:  10px; /* 3 */
+  font-family: arial;
+  font-size: .8em;
+  color: #5f8dd3ff;
+}
 
-    html {
-  font-size: 14px;
+   html {
+  font-size: 20px;
 }
 @media screen and (min-width: 320px) {
   html {
-    font-size: calc(16px + 6 * ((100vw - 320px) / 680));
+    font-size: calc(22px + 6 * ((100vw - 320px) / 680));
   }
 }
 @media screen and (min-width: 1000px) {
   html {
-    font-size: 24px;
+    font-size: 32px;
   }
-}
+} 
 
     #lbl {
       font-family: arial;
       color: #626262;
-      padding: 10px;
       border: 1px solid #ececec;
+      background-color: aliceblue;
       text-align: center;
       line-height: 1.5;
-      height: 100%
+      height: 100%;
+        padding: 10px;
     }
 
     #date {
@@ -34,13 +45,15 @@
     } 
 
     body {
-      background-color: aliceblue;
+      background-color: white;
     }
   </style>
 </head>
 
 <body>
+  <div id="wrapper">
   <div id="lbl"></div>
+  </div>
 </body>
 
 <script>
