@@ -1,67 +1,78 @@
 <!DOCTYPE html>
-<html> 
+<html>
+
 <head>
-    <title>Greeting Message</title> 
-    <style>
-#lbl {
-    font-family: arial;
-    font-size: x-large;
-    color: #626262;
-    padding: 20px 5px 10px 5px;
-    margin: 15px 0 10px 0;
-    text-align: center;
-    line-height: 1.5;
-    height:100%
+  <title>Greeting Message</title>
+  <style>
 
+    html {
+  font-size: 16px;
+}
+@media screen and (min-width: 320px) {
+  html {
+    font-size: calc(16px + 6 * ((100vw - 320px) / 680));
+  }
+}
+@media screen and (min-width: 1000px) {
+  html {
+    font-size: 24px;
+  }
+}
 
-}
-#date{
-    font-size:medium;
-}
-body{
-    background-color: aliceblue;
-}
-    </style>
+    #lbl {
+      font-family: arial;
+      color: #626262;
+      padding: 10px;
+      border: 1px solid #ececec;
+      text-align: center;
+      line-height: 1.5;
+      height: 100%
+    }
+
+    #date {
+      font-size: 70%;
+    } 
+
+    body {
+      background-color: aliceblue;
+    }
+  </style>
 </head>
+
 <body>
-    <div id="lbl"></div>
+  <div id="lbl"></div>
 </body>
 
 <script>
-    var weekday = new Array(7);
-    weekday[0] = "Sunday";
-    weekday[1] = "Monday";
-    weekday[2] = "Tuesday";
-    weekday[3] = "Wednesday";
-    weekday[4] = "Thursday";
-    weekday[5] = "Friday";
-    weekday[6] = "Saturday";
-
-    const monthNames = ["Jan.", "Feb.", "Mar.", "Apr.", "May", "June",
-  "July", "Aug.", "Sept.", "Oct.", "Nov.", "Dec."
-];
-
-const d = new Date();
+  var weekday = new Array(7);
+  weekday[0] = "Sunday";
+  weekday[1] = "Monday";
+  weekday[2] = "Tuesday";
+  weekday[3] = "Wednesday";
+  weekday[4] = "Thursday";
+  weekday[5] = "Friday";
+  weekday[6] = "Saturday";
+  const monthNames = ["Jan.", "Feb.", "Mar.", "Apr.", "May", "June",
+    "July", "Aug.", "Sept.", "Oct.", "Nov.", "Dec."
+  ];
+  const d = new Date();
   var monthWord
-//monthWord = document.write(monthNames[d.getMonth()]);
   //monthWord = document.write(monthNames[d.getMonth()]);
-    
-    var today = new Date();
-    var hrs = today.getHours();
-    var dayOfWeek = weekday[today.getDay()];
-    //var date = dayOfWeek+" " + today.getDate() + "/" +(today.getMonth()+1) +'/'+today.getFullYear()  ;
-  date = dayOfWeek+" " + (monthNames[d.getMonth()]) + " " +  today.getDate();
+  //monthWord = document.write(monthNames[d.getMonth()]);
+  var today = new Date();
+  var hrs = today.getHours();
+  var dayOfWeek = weekday[today.getDay()];
+  //var date = dayOfWeek+" " + today.getDate() + "/" +(today.getMonth()+1) +'/'+today.getFullYear()  ;
+  date = dayOfWeek + " " + (monthNames[d.getMonth()]) + " " + today.getDate();
+  var greet;
+  if (hrs < 12)
+    greet = 'Good Morning  ';
+  else if (hrs >= 12 && hrs <= 17)
+    greet = 'Good Afternoon ';
+  else if (hrs >= 17 && hrs <= 24)
+    greet = 'Good Evening  ';
+  //document.getElementById('lbl').innerHTML = greet+=`<div id="date"> It's ${date}</div>`;
+  document.getElementById('lbl').innerHTML = greet += `<div id="date"> It's ${date}</div>`;
+</script>
 
-    var greet;
-
-    if (hrs < 12)
-        greet = 'Good Morning  ';
-    else if (hrs >= 12 && hrs <= 17)
-        greet = 'Good Afternoon ';
-    else if (hrs >= 17 && hrs <= 24)
-        greet = 'Good Evening  ';
-  
-    //document.getElementById('lbl').innerHTML = greet+=`<div id="date"> It's ${date}</div>`;
-  document.getElementById('lbl').innerHTML = greet+=`<div id="date"> It's ${date}</div>`;
-</script> 
 </html>
