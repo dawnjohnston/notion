@@ -2,35 +2,43 @@
 <html>
 
 <head>
+  <link href='https://fonts.googleapis.com/css?family=Contrail One' rel='stylesheet'>
   <title>Greeting Message</title>
   <style>
-    #wrapper {
-    max-width: 960px;
-    margin-left: auto;
-    margin-right: auto;
-  padding-right: 10px; /* 3 */
-  padding-left:  10px; /* 3 */
-  font-family: arial;
-  font-size: .8em;
-  color: #5f8dd3ff;
-}
+    body {
+      font-family: 'Contrail One';
+    }
 
-   html {
-  font-size: 24px;
-}
-@media screen and (min-width: 320px) {
-  html {
-    font-size: calc(24px + 6 * ((100vw - 320px) / 680));
-  }
-}
-@media screen and (min-width: 1000px) {
-  html {
-    font-size: 30px;
-  }
-} 
+    #wrapper {
+      max-width: 960px;
+      margin-left: auto;
+      margin-right: auto;
+      padding-right: 10px;
+      /* 3 */
+      padding-left: 10px;
+      /* 3 */
+      font-family: arial;
+      font-size: .8em;
+      color: #5f8dd3ff;
+    }
+
+    html {
+      font-size: 24px;
+    }
+
+    @media screen and (min-width: 320px) {
+      html {
+        font-size: calc(24px + 6 * ((100vw - 320px) / 680));
+      }
+    }
+
+    @media screen and (min-width: 1000px) {
+      html {
+        font-size: 30px;
+      }
+    }
 
     #lbl {
-      font-family: Century Gothic, arial;
       color: #626262;
       border: 1px solid #ececec;
       background-color: aliceblue;
@@ -42,7 +50,7 @@
 
     #date {
       font-size: 70%;
-    } 
+    }
 
     body {
       background-color: white;
@@ -52,7 +60,7 @@
 
 <body>
   <div id="wrapper">
-  <div id="lbl"></div>
+    <div id="lbl"></div>
   </div>
 </body>
 
