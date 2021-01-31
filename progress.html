@@ -35,31 +35,50 @@
   </style>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-  <script type="text/javascript">
-    var start = new Date(new Date().getFullYear(), 0, 1);
-    var end = new Date(new Date().getFullYear(), 11, 31);
+ <script type="text/javascript">
+    var startYear = new Date(new Date().getFullYear(), 0, 1);
+    var endYear = new Date(new Date().getFullYear(), 11, 31);
+    var date = new Date(),
+      y = date.getFullYear(),
+      m = date.getMonth();
     today = new Date();
-    var timeElapsed = (Math.round(((today - start) / (end - start)) * 100));
+    var timeElapsedYear = (Math.round(((today - startYear) / (endYear - startYear)) * 100));
     $(document).ready(function() {
       var progressBarVal;
-      progressBarVal = timeElapsed;
-     
-      var html = "<div id='myProgress' aria-valuenow=" + progressBarVal + " aria-valuemin='0' aria-valuemax='100' style='width:" + progressBarVal + "%'>" + "</div>";
-      $(".progress").append(html);
-      $("#myBar").append(html);
+      progressBarVal = timeElapsedYear;
+      // var html = "<div class='progress-bar progress-bar-striped active' role='progressbar' aria-valuenow=" + progressBarVal + " aria-valuemin='0' aria-valuemax='100' style='width:" + progressBarVal + "%'>" + progressBarVal + "%</div>";
+      //   var html = "<div id='myProgress' aria-valuenow=" + progressBarVal + " aria-valuemin='0' aria-valuemax='100' style='width:" + progressBarVal + "%'>" + progressBarVal + "%</div>";
+      var html = "<div class='myProgress' aria-valuenow=" + progressBarVal + " aria-valuemin='0' aria-valuemax='100' style='width:" + progressBarVal + "%'>" + "<p class='text'>" + progressBarVal + "%</p></div>";
+      $(".myBar").append(html);
+    });
+  </script>
+  <script type="text/javascript">
+    var startMonth = new Date(y, m, 1);
+    var endMonth = new Date(y, m + 1, 1);
+    today = new Date();
+    var timeElapsedMonth = (Math.round(((today - startMonth) / (endMonth - startMonth)) * 100));
+    $(document).ready(function() {
+      var progressBarMonth;
+      progressBarMonth = timeElapsedMonth;
+      var p = "<div class='myProgress'" + progressBarMonth + " style='width:" + progressBarMonth + "%'>" + "<p class='text'>" + progressBarMonth + "%</p>";
+      $(".myBarMonth").append(p);
     });
   </script>
 </head>
 
 <body>
   <p class="title">Year: </p>
-  <div id="container">
-    <!-- <div class="progress">
+
+  <!-- <div class="progress">
     </div> -->
 
-    <div id="myProgress">
-      <div id="myBar"></div>
-    </div>
+  <div class="myProgress">
+    <div class="myBar"></div>
+  </div>
+  
+  <p class="title">Month: </p>
+  <div class="myProgress">
+    <div class="myBarMonth"></div>
   </div>
 </body>
 
