@@ -3,87 +3,127 @@
 <head>
   <title>Percentage of year</title>
   <meta charset="utf-8">
+  <!-- <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css"> -->
   <style>
-.title {
+html body {
+  background-color: white;
+}
+
+#wrapper {
+  width: 98%;
+    margin-right: auto; /* 1 */
+  margin-left:  auto; /* 1 */
+  max-width: 960px; /* 2 */
+  padding-right: 10px; /* 3 */
+  padding-left:  10px; /* 3 */
+  padding-bottom:  10px; /* 3 */
   font-family: arial;
-  font-size: .7em;
+  font-size: .8em;
   color: #7ee383;
-  font-weight: 700;
+  border: 1px #efefee solid;
+}
+.title {
   margin-bottom: 0;
+    font-weight: 700;
 }
 
 .myProgress {
   background-color: #7ee383;
-  padding: 3px;
+  padding: 2px;
   border-radius:16px!important
 }
 
 .myBar {
-  padding: 2px;
+  padding: 1px;
   background-color: #efefef;
   border-radius:16px!important
 }
 
 .myBarMonth {
-  padding: 2px;
+  padding: 1px;
   background-color: #efefef;
   border-radius:16px!important
 }
 
 .text {
-  font-family: arial;
-  font-size: .5em;
-  color: white;
+  font-size: .8em;
   margin: 0;
-  padding-left: 2px;
+  color: white;
+  padding-left: 1px;
 }
   </style>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
- <script type="text/javascript">
+  <script type="text/javascript">
+    //YEAR
+    
     var startYear = new Date(new Date().getFullYear(), 0, 1);
     var endYear = new Date(new Date().getFullYear(), 11, 31);
+    
     var date = new Date(),
       y = date.getFullYear(),
       m = date.getMonth();
     today = new Date();
+    //calculate percent of year complete
     var timeElapsedYear = (Math.round(((today - startYear) / (endYear - startYear)) * 100));
+    
     $(document).ready(function() {
       var progressBarVal;
+     document.getElementById("currentYear").innerHTML = y; //gets the year to display
+      
       progressBarVal = timeElapsedYear;
-      // var html = "<div class='progress-bar progress-bar-striped active' role='progressbar' aria-valuenow=" + progressBarVal + " aria-valuemin='0' aria-valuemax='100' style='width:" + progressBarVal + "%'>" + progressBarVal + "%</div>";
-      //   var html = "<div id='myProgress' aria-valuenow=" + progressBarVal + " aria-valuemin='0' aria-valuemax='100' style='width:" + progressBarVal + "%'>" + progressBarVal + "%</div>";
-      var html = "<div class='myProgress' aria-valuenow=" + progressBarVal + " aria-valuemin='0' aria-valuemax='100' style='width:" + progressBarVal + "%'>" + "<p class='text'>" + progressBarVal + "%</p></div>";
+      
+      var html = "<div class='myProgress' aria-valuenow=" + progressBarVal + " aria-valuemin='0' aria-valuemax='100' style='width:" + progressBarVal + "%'></div>";
+      document.getElementById("percentYear").innerHTML = progressBarVal;
       $(".myBar").append(html);
     });
   </script>
+  
   <script type="text/javascript">
+    //MONTH
+     const monthNames = ["January", "February", "March", "April", "May", "June",
+  "July", "August", "September", "October", "November", "December"
+];
+
+const d = new Date();
+//var currentMonth =(monthNames[d.getMonth()]);
+    const currentMonth = date.toLocaleString('default', { month: 'long' });
+    // document.write(currentMonth);
+    
+    var startYear = new Date(new Date().getFullYear(), 0, 1);
+    var endYear = new Date(new Date().getFullYear(), 11, 31);
     var startMonth = new Date(y, m, 1);
     var endMonth = new Date(y, m + 1, 1);
     today = new Date();
     var timeElapsedMonth = (Math.round(((today - startMonth) / (endMonth - startMonth)) * 100));
     $(document).ready(function() {
       var progressBarMonth;
+      
+      document.getElementById("thisMonth").innerHTML = currentMonth; //gets the month to display
+      
       progressBarMonth = timeElapsedMonth;
-      var p = "<div class='myProgress'" + progressBarMonth + " style='width:" + progressBarMonth + "%'>" + "<p class='text'>" + progressBarMonth + "%</p>";
+      var p = "<div class='myProgress'" + progressBarMonth + " style='width:" + progressBarMonth + "%'><div>";
+      document.getElementById("percentMonth").innerHTML = progressBarMonth;
       $(".myBarMonth").append(p);
     });
   </script>
 </head>
 
 <body>
-  <p class="title">Year: </p>
+  <div id='wrapper'>
+    
+    <p class="title"><span id="thisMonth"></span> is <span id="percentMonth"></span>% complete</p>
+    <div class="myProgress">
+      <div class="myBarMonth"></div>
+    </div>
+    
+    <p class="title"><span id="currentYear"></span> is <span id="percentYear"></span>% complete</p>
+    <div class="myProgress">
+      <div class="myBar"></div>
+    </div>
 
-  <!-- <div class="progress">
-    </div> -->
 
-  <div class="myProgress">
-    <div class="myBar"></div>
-  </div>
-  
-  <p class="title">Month: </p>
-  <div class="myProgress">
-    <div class="myBarMonth"></div>
   </div>
 </body>
 
