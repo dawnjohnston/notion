@@ -1,4 +1,4 @@
-<html lang="en">
+<html lang="en"> 
 
 <head>
   <title>Percentage of year</title>
@@ -29,6 +29,7 @@ html body {
 .myProgress {
   background-color: #5f8dd3ff;
   padding: 2px;
+  margin: 1px;
   border-radius:16px!important
 }
 
@@ -44,7 +45,6 @@ html body {
   border-radius:16px!important
 }
   </style>
-  
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
   <script type="text/javascript">
@@ -57,15 +57,15 @@ html body {
       m = date.getMonth();
     today = new Date();
     //calculate percent of year complete
-    var timeElapsedYear = (Math.round(((today - startYear) / (endYear - startYear)) * 100));
+    var timeElapsedYear = (Math.floor(((today - startYear) / (endYear - startYear)) * 100));
     $(document).ready(function() {
       var progressBarVal;
       
       progressBarVal = timeElapsedYear; // passes the percentage
       var html = "<div class='myProgress' aria-valuenow=" + progressBarVal + " aria-valuemin='0' aria-valuemax='100' style='width:" + progressBarVal + "%'></div>";
       $(".myBarYear").append(html); // displays the year progress bar
-       document.getElementById("currentYear").innerHTML = y; //gets the year to display
-       document.getElementById("percentYear").innerHTML = progressBarVal; // passes the percentage to display 
+      document.getElementById("currentYear").innerHTML = y; //gets the year to display
+      document.getElementById("percentYear").innerHTML = progressBarVal; // passes the percentage to display 
     });
   </script>
 
@@ -84,7 +84,7 @@ html body {
     var startMonth = new Date(y, m, 1);
     var endMonth = new Date(y, m + 1, 1);
     today = new Date();
-    var timeElapsedMonth = (Math.round(((today - startMonth) / (endMonth - startMonth)) * 100));
+    var timeElapsedMonth = (Math.floor(((today - startMonth) / (endMonth - startMonth)) * 100));
     $(document).ready(function() {
       var progressBarMonth;
 
@@ -92,8 +92,8 @@ html body {
       var p = "<div class='myProgress'" + progressBarMonth + " style='width:" + progressBarMonth + "%'><div>";
       
       $(".myBarMonth").append(p); //displays the progress bar
-      document.getElementById("thisMonth").innerHTML = currentMonth; //passes the month name to display
       document.getElementById("percentMonth").innerHTML = progressBarMonth; //displays the percentage
+      document.getElementById("thisMonth").innerHTML = currentMonth; //passes the month name to display
       
     });
   </script>
