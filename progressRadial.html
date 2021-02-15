@@ -6,7 +6,7 @@
   <meta charset="utf-8">
 
   <style>
-html body {
+    html body {
   background-color: white;
   color: #5f8dd3;
 }
@@ -18,7 +18,7 @@ html body {
   margin-right: auto;
   padding-right: 10px; /* 3 */
   padding-left: 10px; /* 3 */
-  padding-bottom: 10px; /* 3 */
+  padding-bottom: 5px; /* 3 */
   font-family: arial;
   font-size: 0.8em;
   text-align: center;
@@ -29,13 +29,14 @@ html body {
 
 /* CONTAINER FOR spinner and title */
 .container {
-  width: 120px;
+  width: 80px;
   display: inline-block;
-  margin: 5px;
+  margin: 5px 3px;
 }
 .container h3 {
   text-align: center;
-  margin: 10px 0 10px 0;
+  margin: 5px 0 5px 0;
+  font-size: 1em;
 }
 
 /* container for the spinner */
@@ -43,9 +44,9 @@ html body {
 #spinner2,
 #spinner3 {
   position: relative;
-  margin: 5px 0 5px 10px;
-  width: 100px;
-  height: 100px;
+  margin: 5px 0 5px 0;
+  width: 80px;
+  height: 80px;
 }
 
 canvas {
@@ -59,13 +60,14 @@ canvas {
 .chart,
 .chart2,
 .chart3 {
-  line-height: 100px;
-  width: 100px;
+  line-height: 80px;
+  width: 80px;
   text-align: center;
   font-family: sans-serif;
-  font-size: 1.8em;
+  font-size: 1.6em;
   font-weight: 100;
 }
+
  </style>
  
 </head>
@@ -96,8 +98,8 @@ canvas {
   <script>
 //set some variables 
 // circle variables
-var size = 100; // must change the .chart style too
-var lineWidth = 15;
+var size = 80; // must change the .chart style too
+var lineWidth = 10;
 var cap = "round"; // butt, round or square
 var rotate = 0;
 var radius = (size - lineWidth) / 2;
