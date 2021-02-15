@@ -68,7 +68,32 @@ canvas {
 }
  </style>
  
-<script>
+</head>
+
+<body>
+  <div id='wrapper'>
+
+    <div class="container">
+      <h3><span id="day"></span></h3>
+      <div id="spinner3">
+        <div class="chart3" id="graph3"></span></div>
+      </div>
+    </div>
+
+    <div class="container">
+      <h3><span id="Month"></span></h3>
+      <div id="spinner">
+        <div class="chart" id="graph"></div>
+      </div>
+    </div>
+    <div class="container">
+      <h3><span id="Year"></span></h3>
+      <div id="spinner2">
+        <div class="chart2" id="graph2"></span></div>
+      </div>
+    </div>
+
+  <script>
 //set some variables 
 // circle variables
 var size = 100; // must change the .chart style too
@@ -224,31 +249,8 @@ drawCircle(ctx2, "#5f8dd3", lineWidth, percentY / 100);
 
 </script>
 
-</head>
 
-<body>
-  <div id='wrapper'>
-
-    <div class="container">
-      <h3><span id="day"></span></h3>
-      <div id="spinner3">
-        <div class="chart3" id="graph3"></span></div>
-      </div>
-    </div>
-
-    <div class="container">
-      <h3><span id="Month"></span></h3>
-      <div id="spinner">
-        <div class="chart" id="graph"></div>
-      </div>
-    </div>
-    <div class="container">
-      <h3><span id="Year"></span></h3>
-      <div id="spinner2">
-        <div class="chart2" id="graph2"></span></div>
-      </div>
-    </div>
-
+  
 </body>
 
 </html>
