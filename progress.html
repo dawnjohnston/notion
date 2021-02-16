@@ -47,8 +47,8 @@
   <script type="text/javascript">
    //set some variables 
 // like length of waking day - used later in percentage of day complete
-var wake = 6; // 7am
-var sleep = 22; //11pm
+var wake = 7; // 7am
+var sleep = 23; //11pm
 var secondsAwake = 84600 / 24 * (sleep - wake);
 
 //calculate the percentage of YEAR complete    
@@ -114,8 +114,19 @@ const dayNum = theDay + " " + num;
     today = new Date();
     $(document).ready(function() {
       var progressBarDay;
+      var currentHour = date.getHours();
+      
+      // calc the percentage
+      // if it's before the wake time percent of day passed is 0, 
+      // if it's after sleep time, percent of day passed is 100
+      if (currentHour < wake) {
+        progressBarDay = 0;
+      } else if (currentHour > sleep) {
+        progressBarDay = 100;
+      } else {
+        progressBarDay = Math.floor((((today.getTime() - date.setHours(wake,0,0))/1000) / secondsAwake) * 100);
+      }
 
-      progressBarDay = Math.floor((((today.getTime() - date.setHours(wake,0,0))/1000) / secondsAwake) * 100); // calc the percentage
       var p = "<div class='myProgress'" + progressBarDay + " style='width:" + progressBarDay + "%'><div>";
       
       $(".myBarDay").append(p); //displays the progress bar
