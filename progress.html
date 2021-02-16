@@ -105,10 +105,10 @@ weekday[6] = "Saturday";
 
 //get the current day
 var theDay = weekday[date.getDay()];
-var num = date.getDate();
-
+    
+//var num = date.getDate();
 // put the day and date together
-const dayNum = theDay + " " + num;
+// const dayNum = theDay + " " + num;
 
     // this is the calculation stuff...
     today = new Date();
@@ -131,25 +131,25 @@ const dayNum = theDay + " " + num;
       
       $(".myBarDay").append(p); //displays the progress bar
       document.getElementById("percentDay").innerHTML = progressBarDay; //displays the percentage
-      document.getElementById("thisDay").innerHTML = dayNum; //passes the day and date to display
+      document.getElementById("thisDay").innerHTML = theDay; //passes the day and date to display
     });
   </script>
 </head>
 
 <body>
  <div id='wrapper'>
-    
-        <p class="title"><span id="thisDay"></span> is <span id="percentDay"></span>% complete</p>
+
+    <p class="title"><span id="thisDay"></span>: <span id="percentDay"></span>%</p>
     <div class="myProgress">
       <div class="myBarDay"></div>
     </div>
 
-    <p class="title"><span id="thisMonth"></span> is <span id="percentMonth"></span>% complete</p>
+    <p class="title"><span id="thisMonth"></span>: <span id="percentMonth"></span>%</p>
     <div class="myProgress">
       <div class="myBarMonth"></div>
     </div>
 
-    <p class="title"><span id="currentYear"></span> is <span id="percentYear"></span>% complete</p>
+    <p class="title"><span id="currentYear"></span>: <span id="percentYear"></span>%</p>
     <div class="myProgress">
       <div class="myBarYear"></div>
     </div>
