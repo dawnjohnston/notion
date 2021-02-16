@@ -103,6 +103,9 @@ var lineWidth = 10;
 var cap = "round"; // butt, round or square
 var rotate = 0;
 var radius = (size - lineWidth) / 2;
+  
+var color1 = "#efefef"; // bg of spinner
+var color2 = "#5f8dd3"; // foreground of spinner
 
 // set length of waking day
 var wake = 7; // 7am
@@ -171,6 +174,7 @@ var currentHour = date.getHours();
 // if it's after sleep time, percent of day passed is 100
 if (currentHour < wake) {
   percentD = 0;
+  color2 = "#efefef";
 } else if (currentHour > sleep) {
   percentD = 100;
 } else {
@@ -249,20 +253,17 @@ var drawCircle = function (canv, color, lineWidth, percent) {
 };
 
 // draw DAY
-drawCircle(ctx3, "#efefef", lineWidth, 100 / 100);
-drawCircle(ctx3, "#5f8dd3", lineWidth, percentD / 100);
+drawCircle(ctx3, color1, lineWidth, 100 / 100);
+drawCircle(ctx3, color2, lineWidth, percentD / 100);
 
 // draw MONTH
-drawCircle(ctx, "#efefef", lineWidth, 100 / 100);
-drawCircle(ctx, "#5f8dd3", lineWidth, percentM / 100);
+drawCircle(ctx, color1, lineWidth, 100 / 100);
+drawCircle(ctx, color2, lineWidth, percentM / 100);
 
 // draw YEAR
-drawCircle(ctx2, "#efefef", lineWidth, 100 / 100);
-drawCircle(ctx2, "#5f8dd3", lineWidth, percentY / 100);
-
+drawCircle(ctx2, color1, lineWidth, 100 / 100);
+drawCircle(ctx2, color2, lineWidth, percentY / 100);
 </script>
-
-
   
 </body>
 
