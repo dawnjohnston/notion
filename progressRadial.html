@@ -105,8 +105,8 @@ var rotate = 0;
 var radius = (size - lineWidth) / 2;
 
 // set length of waking day
-var wake = 6; // 7am
-var sleep = 22; //11pm
+var wake = 7; // 7am
+var sleep = 23; //11pm
 var secondsAwake = 84600 / 24 * (sleep - wake);
 
 //date variables
@@ -164,7 +164,18 @@ var dayNum = theDay + " " + num;
 document.getElementById("day").innerHTML = dayNum;
 
 // calculate percent of day
-var percentD = Math.floor((((today.getTime() - date.setHours(wake,0,0))/1000) / secondsAwake) * 100);
+var percentD;
+var currentHour = date.getHours();
+
+// if it's before the wake time percent of day passed is 0, 
+// if it's after sleep time, percent of day passed is 100
+if (currentHour < wake) {
+  percentD = 0;
+} else if (currentHour > sleep) {
+  percentD = 100;
+} else {
+  percentD = Math.floor((((today.getTime() - date.setHours(wake,0,0))/1000) / secondsAwake) * 100);
+}
 
 // create canvas
 var canvas3 = document.createElement("canvas");
