@@ -1,0 +1,86 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title>The HTML5 Herald</title>
+  <meta name="blockquote" content="Douglas Adams quote">
+<style>
+body {
+  font: 0.8em/1em "Lucida Grande", Tahoma, Verdana, sans-serif;
+  color: #404040;
+  background: aliceblue;
+}
+
+    @media screen and (min-width: 320px) {
+      html {
+        font-size: calc(1em + 6 * ((100vw - 320px) / 680));
+      }
+    }
+
+    @media screen and (min-width: 1000px) {
+      html {
+        font-size: 1.3em;
+        width: 90%;
+      }
+    }
+
+.container {
+  background: #fff;
+  width: 95%;
+  padding: .8em 1.2em;
+  max-width: 960px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+p {
+  margin-bottom: 1.5em;
+}
+p:last-child {
+  margin-bottom: 0;
+}
+
+blockquote {
+  display: block;
+  border-width: 2px 0;
+  border-style: solid;
+  border-color: #d7ecff;
+  padding: 1.5em 0 0.5em;
+  line-height: 1.4em;
+  margin: 1.5em 0;
+  position: relative;
+}
+blockquote:before {
+  content: "\201C";
+  position: absolute;
+  top: 0em;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #fff;
+  width: 3rem;
+  height: 2rem;
+  font: 6em/1.08em "PT Sans", sans-serif;
+  color: #d7ecff;
+  text-align: center;
+}
+blockquote:after {
+  content: "\2013 \2003"attr(cite);
+  display: block;
+  text-align: right;
+  font-size: 0.875em;
+  color: #404040;
+}
+
+</style>
+
+</head>
+
+<body>
+  <div class="container">
+    <blockquote cite="Douglas Adams">It is difficult to be sat on all day, every day, by some other creature, without forming an opinion on them. On the other hand, it is perfectly possible to sit all day, every day, on top of another creature and not have the slightest thought about them whatsoever.
+      </blockquote>
+  </div>
+</body>
+</html>
