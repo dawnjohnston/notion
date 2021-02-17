@@ -96,42 +96,42 @@ canvas {
     </div>
 
 <script type="text/javascript">
-//set some variables 
+//set some variables
 // circle variables
-var size = 80; // must change the .chart style too
+var size = 80; // must change the styles too
 var lineWidth = 10;
 var cap = "round"; // butt, round or square
 var rotate = 0;
 var radius = (size - lineWidth) / 2;
-  
+
 var color1 = "#efefef"; // bg of spinner
 var color2 = "#5f8dd3"; // foreground of spinner
 
 // set length of waking day
 var wake = 7; // 7am
 var sleep = 23; //11pm
-var secondsAwake = 84600 / 24 * (sleep - wake);
+var secondsAwake = (84600 / 24) * (sleep - wake);
 
 //date variables
 var date = new Date(),
   y = date.getFullYear(),
   m = date.getMonth();
-today = new Date();
+
 
 var weekday = new Array(7);
-weekday[0] = "Sunday";
-weekday[1] = "Monday";
-weekday[2] = "Tuesday";
-weekday[3] = "Wednesday";
-weekday[4] = "Thursday";
-weekday[5] = "Friday";
-weekday[6] = "Saturday";
+weekday[0] = "Sun";
+weekday[1] = "Mon";
+weekday[2] = "Tues";
+weekday[3] = "Wed";
+weekday[4] = "Thurs";
+weekday[5] = "Fri";
+weekday[6] = "Sat";
 
 // get the day and numeric date
 var theDay = weekday[date.getDay()];
 var num = date.getDate();
 
-//gets the current MONTH 
+//gets the current MONTH
 const monthNames = [
   "January",
   "February",
@@ -166,25 +166,31 @@ var elyD = document.getElementById("graph3");
 var dayNum = theDay + " " + num;
 document.getElementById("day").innerHTML = dayNum;
 
-// calculate percent of day
 var percentD;
 var currentHour = date.getHours();
-
-// if it's before the wake time percent of day passed is 0, 
-// if it's after sleep time, percent of day passed is 100
-if (currentHour < wake) {
-  percentD = 0;
-  color2 = "#efefef";
-} else if (currentHour > sleep) {
-  percentD = 100;
-} else {
-  percentD = Math.floor((((today.getTime() - date.setHours(wake,0,0))/1000) / secondsAwake) * 100);
-}
 
 // create canvas
 var canvas3 = document.createElement("canvas");
 var span3 = document.createElement("span");
-span3.textContent = percentD + "%";
+
+//test
+//var timeNow = Math.floor((((date.getTime())- date.setHours(wake, 0, 0))/secondsAwake)/10);
+//document.getElementById("timeNow").innerHTML = timeNow;
+
+// if it's before the wake time percent of day passed is 0,
+//and if it's after sleep time, percent of day passed is 100
+// if it's 0, draw a little bit of the arc but display 0%
+if (currentHour < wake) {
+  percentD = 0.1; // draw a little bit of the arc
+  span3.textContent = "0 %"; // but display 0%
+} else if (currentHour > sleep) {
+  percentD = 100;
+  span3.textContent = percentD + "%";
+} else {
+  // percentD = Math.floor((((date.getTime() - date.setHours(wake,0,0))/1000) / secondsAwake) * 100);
+    percentD = Math.floor((((date.getTime())- date.setHours(wake, 0, 0))/secondsAwake)/10);;
+    span3.textContent = percentD + "%";
+}
 
 var ctx3 = canvas3.getContext("2d");
 canvas3.width = canvas3.height = size;
@@ -202,7 +208,9 @@ var el = document.getElementById("graph");
 document.getElementById("Month").innerHTML = currentMonth;
 
 // percent of month
-var  percentM =  Math.floor(((today - startMonth) / (endMonth - startMonth)) * 100);
+var percentM = Math.floor(
+  ((date - startMonth) / (endMonth - startMonth)) * 100
+);
 
 // create canvas
 var canvas1 = document.createElement("canvas");
@@ -225,7 +233,7 @@ var ely = document.getElementById("graph2");
 document.getElementById("Year").innerHTML = y;
 
 // calculate percent of year
-var percentY = Math.floor(((today - startYear) / (endYear - startYear)) * 100);
+var percentY = Math.floor(((date - startYear) / (endYear - startYear)) * 100);
 
 // create canvas
 var canvas2 = document.createElement("canvas");
