@@ -152,6 +152,7 @@ const currentMonth = date.toLocaleString("default", {
 }); // all this is just to display the month name in the html
 
 // set some more variables...
+var today = new Date();
 var startYear = new Date(new Date().getFullYear(), 0, 1);
 var endYear = new Date(new Date().getFullYear(), 11, 31);
 var startMonth = new Date(y, m, 1);
@@ -209,7 +210,7 @@ document.getElementById("Month").innerHTML = currentMonth;
 
 // percent of month
 var percentM = Math.floor(
-  ((date - startMonth) / (endMonth - startMonth)) * 100
+  ((today - startMonth) / (endMonth - startMonth)) * 100
 );
 
 // create canvas
@@ -233,7 +234,7 @@ var ely = document.getElementById("graph2");
 document.getElementById("Year").innerHTML = y;
 
 // calculate percent of year
-var percentY = Math.floor(((date - startYear) / (endYear - startYear)) * 100);
+var percentY = Math.floor(((today - startYear) / (endYear - startYear)) * 100);
 
 // create canvas
 var canvas2 = document.createElement("canvas");
