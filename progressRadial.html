@@ -182,14 +182,14 @@ var span3 = document.createElement("span");
 //and if it's after sleep time, percent of day passed is 100
 // if it's 0, draw a little bit of the arc but display 0%
 if (currentHour < wake) {
-  percentD = 0.1; // draw a little bit of the arc
-  span3.textContent = "0 %"; // but display 0%
-} else if (currentHour > sleep) {
+  percentD = 0; 
+  //span3.textContent = "0%"; // but display 0%
+} else if (currentHour >= sleep) {
   percentD = 100;
-  span3.textContent = percentD + "%";
+ // span3.textContent = percentD + "%";
 } else {
   // percentD = Math.floor((((date.getTime() - date.setHours(wake,0,0))/1000) / secondsAwake) * 100);
-    percentD = Math.floor((((date.getTime())- date.setHours(wake, 0, 0))/secondsAwake)/10);;
+     percentD = Math.floor(((date.getTime() - date.setHours(wake, 0, 0))/secondsAwake)/10);
     span3.textContent = percentD + "%";
 }
 
@@ -252,7 +252,7 @@ ctx2.rotate((-1 / 2 + rotate / 180) * Math.PI); // rotate -90 deg
 
 // draw the circles
 var drawCircle = function (canv, color, lineWidth, percent) {
-  percent = Math.min(Math.max(0, percent || 1), 1);
+  percent = Math.min(Math.max(0, percent || 0), 1);
   canv.beginPath();
   canv.arc(0, 0, radius, 0, Math.PI * 2 * percent, false);
   canv.strokeStyle = color;
