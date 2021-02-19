@@ -175,8 +175,9 @@ var canvas3 = document.createElement("canvas");
 var span3 = document.createElement("span");
 
 //test
-//var timeNow = Math.floor((((date.getTime())- date.setHours(wake, 0, 0))/secondsAwake)/10);
-//document.getElementById("timeNow").innerHTML = timeNow;
+startTime = d.setHours(wake,0,0)
+endTime = Date.now();
+elapsedDay = (endTime - startTime)/1000;
 
 // if it's before the wake time percent of day passed is 0,
 //and if it's after sleep time, percent of day passed is 100
@@ -186,9 +187,8 @@ if (currentHour < wake) {
 } else if (currentHour > sleep) {
   percentD = 100;
 } else {
-  // percentD = Math.floor((((date.getTime() - date.setHours(wake,0,0))/1000) / secondsAwake) * 100);
-     percentD = Math.floor(((date.getTime() - date.setHours(wake, 0, 0))/secondsAwake)/10);
-    span3.textContent = percentD + "%";
+  percentD = Math.floor(((elapsedDay - wake) / secondsAwake) * 100);
+  span3.textContent = percentD + "%";
 }
 
 var ctx3 = canvas3.getContext("2d");
