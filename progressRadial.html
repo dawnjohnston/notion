@@ -100,7 +100,7 @@ canvas {
 // circle variables
 var size = 80; // must change the styles too
 var lineWidth = 10;
-var cap = "round"; // butt, round or square
+var cap = "butt"; // butt, round or square
 var rotate = 0;
 var radius = (size - lineWidth) / 2;
 
@@ -183,10 +183,8 @@ var span3 = document.createElement("span");
 // if it's 0, draw a little bit of the arc but display 0%
 if (currentHour < wake) {
   percentD = 0; 
-  //span3.textContent = "0%"; // but display 0%
-} else if (currentHour >= sleep) {
+} else if (currentHour > sleep) {
   percentD = 100;
- // span3.textContent = percentD + "%";
 } else {
   // percentD = Math.floor((((date.getTime() - date.setHours(wake,0,0))/1000) / secondsAwake) * 100);
      percentD = Math.floor(((date.getTime() - date.setHours(wake, 0, 0))/secondsAwake)/10);
