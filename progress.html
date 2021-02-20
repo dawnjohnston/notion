@@ -107,33 +107,29 @@ weekday[6] = "Saturday";
 
 //get the current day
 var theDay = weekday[date.getDay()];
-    
-//var num = date.getDate();
-// put the day and date together
-// const dayNum = theDay + " " + num;
 
-    // this is the calculation stuff...
+// this is the calculation stuff...
 var today = new Date();
 
-var startTime = today.setHours(wake,0,0)
+var startTime = today.setHours(wake, 0, 0);
 var endTime = Date.now();
-var elapsedDay = (endTime - startTime)/1000;
+var elapsedDay = (endTime - startTime) / 1000;
 
-    $(document).ready(function() {
-      var progressBarDay;
-      // get the current hour
-     var currentHour = date.getHours();
+$(document).ready(function () {
+  var progressBarDay;
+  // get the current hour
+  var currentHour = date.getHours();
 
-      // if the current hour is less than the wake time, percentage is 0
-      // if the current hour is later than sleep time, percentage is 100
-      if (currentHour < wake) {
-  progressBarDay = 0;
-} else if (currentHour > sleep) {
-  progressBarDay = 100;
-} else {
-  // progressBarDay = Math.floor((((today.getTime() - date.setHours(wake,0,0))/1000) / secondsAwake) * 100);
-     progressBarDay = Math.floor(((elapsedDay - wake) / secondsAwake) * 100);
-}
+  // if the current hour is less than the wake time, percentage is 0
+  // if the current hour is later than sleep time, percentage is 100
+  if (currentHour < wake) {
+    progressBarDay = 0;
+  } else if (currentHour >= sleep) {
+    progressBarDay = 100;
+  } else {
+    // progressBarDay = Math.floor((((today.getTime() - date.setHours(wake,0,0))/1000) / secondsAwake) * 100);
+    progressBarDay = Math.floor(((elapsedDay - wake) / secondsAwake) * 100);
+  }
     
       var p = "<div class='myProgress'" + progressBarDay + " style='width:" + progressBarDay + "%'><div>";
       
