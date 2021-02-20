@@ -117,7 +117,6 @@ var date = new Date(),
   y = date.getFullYear(),
   m = date.getMonth();
 
-
 var weekday = new Array(7);
 weekday[0] = "Sun";
 weekday[1] = "Mon";
@@ -174,23 +173,23 @@ var currentHour = date.getHours();
 var canvas3 = document.createElement("canvas");
 var span3 = document.createElement("span");
 
-//test
 var startTime = d.setHours(wake,0,0)
 var endTime = Date.now();
 var elapsedDay = (endTime - startTime)/1000;
+//document.getElementById("test").innerHTML = Math.floor(((elapsedDay - wake) / secondsAwake) * 100);
 
 // if it's before the wake time percent of day passed is 0,
-//and if it's after sleep time, percent of day passed is 100
+// and if it's after sleep time, percent of day passed is 100
 // if it's 0, draw a little bit of the arc but display 0%
 if (currentHour < wake) {
   percentD = 0; 
-} else if (currentHour > sleep) {
+} else if (currentHour >= sleep) {
   percentD = 100;
 } else {
-  percentD = Math.floor(((elapsedDay - wake) / secondsAwake) * 100);
-  span3.textContent = percentD + "%";
+    percentD = Math.floor(((elapsedDay - wake) / secondsAwake) * 100);
 }
-
+span3.textContent = percentD + "%";
+  
 var ctx3 = canvas3.getContext("2d");
 canvas3.width = canvas3.height = size;
 
