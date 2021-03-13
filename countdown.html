@@ -83,7 +83,7 @@ body{
           
 <div id="timer">
 
-<p class="text">My birthday!</p>
+<p class="text">Leanne's birthday!</p>
     <div class="days"> 
       <div id="days" class="numbers"> </div><div class="num" data-abbr="days"><span>days</span></div></div> 
       <div class="hours"> 
@@ -97,32 +97,38 @@ body{
 </body>
 <script>
     const year = new Date().getFullYear();
-const myDate = new Date('Mar 11, 2021 00:00:00');
+const myDate = new Date("Apr 2, 2021 00:00:00");
 console.log(myDate);
-
 // countdown
-let timer = setInterval(function() {
-
+let timer = setInterval(function () {
   // get today's date
   const today = new Date().getTime();
-
   // get the difference
   const diff = myDate - today;
-
-  // math
-  let days = Math.floor(diff / (1000 * 60 * 60 * 24));
-  let hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-  let minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+  
+  // set the time variables
+  var days;
+  var hours;
+  var minutes;
+  
+  // if the date has passed, start counting again
+  if (myDate <= today) {
+  days = 365 + (Math.floor(diff / (1000 * 60 * 60 * 24)));
+  hours = 24 + (Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)));
+  minutes = 60 + (Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60)));
+  } else {
+    //do the math
+  days = Math.floor(diff / (1000 * 60 * 60 * 24));
+  hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
   //let seconds = Math.floor((diff % (1000 * 60)) / 1000);
-
-  // display
-  document.getElementById("days").innerHTML=days
-  document.getElementById("hours").innerHTML=hours
-  document.getElementById("minutes").innerHTML=minutes
+  };
+  // display the results
+  document.getElementById("days").innerHTML = days;
+  document.getElementById("hours").innerHTML = hours;
+  document.getElementById("minutes").innerHTML = minutes;
   //document.getElementById("seconds").innerHTML=seconds
-
-
-
 }, 1);
+
 </script>
 </html>
